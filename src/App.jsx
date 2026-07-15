@@ -1,7 +1,9 @@
+import Hero from "./components/Hero/Hero";
+
 function App() {
   return (
     <div className="page">
-      <h1>News Explorer</h1>
+      <Hero />
     </div>
   );
 }
