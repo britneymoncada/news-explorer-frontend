@@ -2,6 +2,7 @@
   height: 80px;
   padding: 0 104px;
   display: flex;
+  justify-content: space-between;
   align-items: center;
   border-bottom: 1px solid rgba(255, 255, 255, 0.2);
   box-sizing: border-box;
@@ -14,4 +15,39 @@
   font-weight: 700;
   line-height: 24px;
   text-decoration: none;
+}
+
+.header__menu-button {
+  display: none;
+  padding: 0;
+  border: none;
+  background: transparent;
+  color: #fff;
+  font-size: 28px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 768px) {
+  .header {
+    padding: 0 40px;
+  }
+}
+
+@media screen and (max-width: 544px) {
+  .header__menu-button {
+    display: block;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .header {
+    height: 56px;
+    padding: 0 16px;
+  }
+
+  .header__logo {
+    font-size: 16px;
+    line-height: 24px;
+  }
 }

@@ -9,6 +9,14 @@ function Header() {
       </a>
 
       <Navigation />
+
+      <button
+        className="header__menu-button"
+        type="button"
+        aria-label="Open navigation menu"
+      >
+        ☰
+      </button>
     </header>
   );
 }

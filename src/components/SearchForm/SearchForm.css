@@ -3,11 +3,11 @@
   display: flex;
   justify-content: center;
   color: #fff;
+  padding: 16px;
 }
 
 .search-form__content {
   width: 608px;
-  padding-top: 80px;
 }
 
 .search-form__title {
@@ -78,4 +78,37 @@
 
 .search-form__button:active {
   background-color: #2a65cc;
+}
+
+@media screen and (max-width: 500px) {
+  .search-form__form {
+    margin-top: 48px;
+  }
+
+  .search-form__title {
+    font-size: 36px;
+    line-height: 40px;
+  }
+
+  .search-form__button {
+    position: relative;
+    width: 100%;
+    line-height: 22px;
+    padding: 17px 16px;
+    height: 56px;
+    margin-bottom: 16px;
+  }
+
+  .search-form__input {
+    line-height: 22px;
+    padding: 17px 16px;
+    height: 56px;
+    margin-bottom: 16px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .search-form__title {
+    font-size: 36px;
+  }
 }

@@ -36,3 +36,25 @@
   line-height: 24px;
   cursor: pointer;
 }
+
+@media screen and (max-width: 768px) {
+  .navigation {
+    gap: 16px;
+  }
+
+  .navigation__link {
+    font-size: 16px;
+  }
+
+  .navigation__signin {
+    width: 152px;
+    height: 40px;
+    font-size: 16px;
+  }
+}
+
+@media screen and (max-width: 544px) {
+  .navigation {
+    display: none;
+  }
+}
