@@ -1,11 +1,11 @@
 import Hero from "./components/Hero/Hero";
-import About from "./components/About/About";
+import Main from "./components/Main/Main";
 
 function App() {
   return (
     <div className="page">
       <Hero />
-      <About />
+      <Main />
     </div>
   );
 }

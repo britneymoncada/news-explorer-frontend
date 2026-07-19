@@ -80,6 +80,17 @@
   background-color: #2a65cc;
 }
 
+@media screen and (max-width: 776px) {
+  .search-form__content {
+    width: 452px;
+  }
+
+  .search-form__title {
+    font-size: 36px;
+    line-height: 40px;
+  }
+}
+
 @media screen and (max-width: 500px) {
   .search-form__form {
     margin-top: 48px;

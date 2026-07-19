@@ -37,7 +37,7 @@
   cursor: pointer;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 776px) {
   .navigation {
     gap: 16px;
   }
@@ -53,7 +53,7 @@
   }
 }
 
-@media screen and (max-width: 544px) {
+@media screen and (max-width: 460px) {
   .navigation {
     display: none;
   }

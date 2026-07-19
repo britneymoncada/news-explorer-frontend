@@ -28,13 +28,14 @@
   cursor: pointer;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 776px) {
   .header {
+    height: 66px;
     padding: 0 40px;
   }
 }
 
-@media screen and (max-width: 544px) {
+@media screen and (max-width: 460px) {
   .header__menu-button {
     display: block;
   }
@@ -43,7 +44,6 @@
 @media screen and (max-width: 320px) {
   .header {
     height: 56px;
-    padding: 0 16px;
   }
 
   .header__logo {
