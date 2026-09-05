@@ -1,4 +1,5 @@
 .header {
+  position: relative;
   height: 80px;
   padding: 0 104px;
   display: flex;
@@ -6,6 +7,7 @@
   align-items: center;
   border-bottom: 1px solid rgba(255, 255, 255, 0.2);
   box-sizing: border-box;
+  z-index: 10;
 }
 
 .header__logo {
@@ -28,20 +30,20 @@
   cursor: pointer;
 }
 
-@media screen and (max-width: 776px) {
+@media screen and (max-width: 768px) {
   .header {
     height: 66px;
     padding: 0 40px;
   }
 }
 
-@media screen and (max-width: 460px) {
+@media screen and (max-width: 450px) {
   .header__menu-button {
     display: block;
   }
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 385px) {
   .header {
     height: 56px;
   }

@@ -1,10 +1,15 @@
 import About from "../About/About";
+import SearchResults from "../SearchResults/SearchResults";
 
-function Main() {
+function Main({ articles = [], searchKeyword }) {
   return (
-    <section className="main">
+    <main className="main">
+      {articles.length > 0 && (
+        <SearchResults articles={articles} searchKeyword={searchKeyword} />
+      )}
+
       <About />
-    </section>
+    </main>
   );
 }
 
