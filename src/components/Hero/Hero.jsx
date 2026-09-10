@@ -1,12 +1,9 @@
-import Header from "../Header/Header";
 import SearchForm from "../SearchForm/SearchForm";
 import "./Hero.css";
 
-function Hero({ onOpenLogin, isModalOpen, onSearch }) {
+function Hero({ onSearch }) {
   return (
     <section className="hero">
-      <Header onOpenLogin={onOpenLogin} isModalOpen={isModalOpen} />
-
       <div className="hero__content">
         <h1 className="hero__title">What's going on in the world?</h1>
 

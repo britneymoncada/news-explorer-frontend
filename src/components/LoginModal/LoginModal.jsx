@@ -1,13 +1,14 @@
 import { useState } from "react";
+
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
+
 import "./LoginModal.css";
 
-function LoginModal({ onClose, onOpenSignup }) {
+function LoginModal({ onClose, onOpenSignup, onLogin }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const isEmailValid = /\S+@\S+\.\S+/.test(email);
-
   const isFormValid = isEmailValid && password !== "";
 
   function handleEmailChange(event) {
@@ -20,7 +21,12 @@ function LoginModal({ onClose, onOpenSignup }) {
 
   function handleSubmit(event) {
     event.preventDefault();
-    onClose();
+
+    if (!isFormValid) {
+      return;
+    }
+
+    onLogin();
   }
 
   return (

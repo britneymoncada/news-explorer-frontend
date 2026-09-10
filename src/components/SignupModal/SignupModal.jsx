@@ -1,5 +1,7 @@
 import { useState } from "react";
+
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
+
 import "./SignupModal.css";
 
 function SignupModal({ onClose, onOpenLogin, onSignupSuccess }) {
@@ -24,7 +26,12 @@ function SignupModal({ onClose, onOpenLogin, onSignupSuccess }) {
 
   function handleSubmit(event) {
     event.preventDefault();
-    onSignupSuccess();
+
+    if (!isFormValid) {
+      return;
+    }
+
+    onSignupSuccess(username);
   }
 
   return (

@@ -1,39 +1,38 @@
-import { useState } from "react";
 import Navigation from "../Navigation/Navigation";
 import "./Header.css";
 
-function Header({ onOpenLogin, isModalOpen }) {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-  function handleMenuClick() {
-    setIsMenuOpen(!isMenuOpen);
-  }
-
-  function handleOpenLogin() {
-    setIsMenuOpen(false);
-    onOpenLogin();
-  }
-
+function Header({
+  onOpenLogin,
+  isModalOpen,
+  isLoggedIn,
+  onLogout,
+  onNavigate,
+  currentPage,
+  userName,
+}) {
   return (
-    <header className="header">
-      <a className="header__logo" href="/">
+    <header
+      className={`header ${
+        currentPage === "home" ? "header_home" : "header_saved"
+      }`}
+    >
+      <button
+        className="header__logo"
+        type="button"
+        onClick={() => onNavigate("home")}
+      >
         NewsExplorer
-      </a>
+      </button>
 
-      <Navigation onOpenLogin={handleOpenLogin} isMenuOpen={isMenuOpen} />
-
-      {!isModalOpen && (
-        <button
-          className="header__menu-button"
-          type="button"
-          aria-label={
-            isMenuOpen ? "Close navigation menu" : "Open navigation menu"
-          }
-          onClick={handleMenuClick}
-        >
-          {isMenuOpen ? "×" : "☰"}
-        </button>
-      )}
+      <Navigation
+        onOpenLogin={onOpenLogin}
+        onLogout={onLogout}
+        onNavigate={onNavigate}
+        isModalOpen={isModalOpen}
+        isLoggedIn={isLoggedIn}
+        currentPage={currentPage}
+        userName={userName}
+      />
     </header>
   );
 }
