@@ -1,10 +1,9 @@
 import { useState } from "react";
-import { searchNews } from "../../utils/newsApi";
+import { searchNews } from "../../utils/NewsApi";
 import "./SearchForm.css";
 
-function SearchForm({ onSearch }) {
+function SearchForm({ onSearch, onLoadingChange }) {
   const [keyword, setKeyword] = useState("");
-  const [isLoading, setIsLoading] = useState(false);
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -15,7 +14,7 @@ function SearchForm({ onSearch }) {
       return;
     }
 
-    setIsLoading(true);
+    onLoadingChange(true);
 
     try {
       const data = await searchNews(trimmedKeyword);
@@ -23,8 +22,9 @@ function SearchForm({ onSearch }) {
       onSearch(trimmedKeyword, data.articles || []);
     } catch (error) {
       console.error(error);
+      onSearch(trimmedKeyword, []);
     } finally {
-      setIsLoading(false);
+      onLoadingChange(false);
     }
   }
 
@@ -39,12 +39,8 @@ function SearchForm({ onSearch }) {
         onChange={(e) => setKeyword(e.target.value)}
       />
 
-      <button
-        className="search-form__button"
-        type="submit"
-        disabled={isLoading}
-      >
-        {isLoading ? "Searching..." : "Search"}
+      <button className="search-form__button" type="submit">
+        Search
       </button>
     </form>
   );
