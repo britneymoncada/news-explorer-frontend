@@ -8,10 +8,11 @@ function Navigation({
   onNavigate,
   isLoggedIn,
   currentPage,
-  currentUser,
+  userName,
+  isMenuOpen,
 }) {
   return (
-    <nav className="navigation">
+    <nav className={`navigation ${isMenuOpen ? "navigation_open" : ""}`}>
       <button
         className={`navigation__link ${
           currentPage === "home" ? "navigation__link_active" : ""
@@ -35,9 +36,7 @@ function Navigation({
           </button>
 
           <button className="navigation__user" type="button" onClick={onLogout}>
-            <span className="navigation__username">
-              {currentUser?.name || "User"}
-            </span>
+            <span className="navigation__username">{userName || "User"}</span>
 
             <img
               className="navigation__logout-icon"

@@ -1,6 +1,8 @@
 import About from "../About/About";
 import SearchResults from "../SearchResults/SearchResults";
 import SavedNews from "../SavedNews/SavedNews";
+import Preloader from "../Preloader/Preloader";
+import NothingFound from "../NothingFound/NothingFound";
 
 function Main({
   articles = [],
@@ -10,6 +12,7 @@ function Main({
   savedArticles,
   onSaveArticle,
   userName,
+  isLoading,
 }) {
   if (currentPage === "saved") {
     return (
@@ -23,17 +26,26 @@ function Main({
     );
   }
 
+  if (isLoading) {
+    return (
+      <main className="main">
+        <Preloader />
+      </main>
+    );
+  }
+
   return (
     <main className="main">
-      {articles.length > 0 && (
+      {articles.length > 0 ? (
         <SearchResults
           articles={articles}
-          searchKeyword={searchKeyword}
           isLoggedIn={isLoggedIn}
           savedArticles={savedArticles}
           onSaveArticle={onSaveArticle}
         />
-      )}
+      ) : searchKeyword ? (
+        <NothingFound />
+      ) : null}
 
       <About />
     </main>

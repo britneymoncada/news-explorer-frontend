@@ -1,7 +1,7 @@
 import SearchForm from "../SearchForm/SearchForm";
 import "./Hero.css";
 
-function Hero({ onSearch }) {
+function Hero({ onSearch, onLoadingChange }) {
   return (
     <section className="hero">
       <div className="hero__content">
@@ -12,7 +12,7 @@ function Hero({ onSearch }) {
           account.
         </p>
 
-        <SearchForm onSearch={onSearch} />
+        <SearchForm onSearch={onSearch} onLoadingChange={onLoadingChange} />
       </div>
     </section>
   );

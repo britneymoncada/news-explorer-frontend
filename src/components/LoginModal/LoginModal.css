@@ -65,12 +65,13 @@
 }
 
 .login-modal__error {
-  margin-top: -24px;
-  margin-bottom: 24px;
+  margin: -24px 0 24px;
+
   font-family: "Inter", Arial, sans-serif;
   font-size: 12px;
   font-weight: 400;
   line-height: 15px;
+
   color: #ff0000;
 }
 

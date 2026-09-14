@@ -13,6 +13,7 @@ function App() {
 
   const [articles, setArticles] = useState([]);
   const [searchKeyword, setSearchKeyword] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
   const [isLoggedIn, setIsLoggedIn] = useState(() => {
     return localStorage.getItem("isLoggedIn") === "true";
@@ -32,17 +33,14 @@ function App() {
     return saved ? JSON.parse(saved) : [];
   });
 
-  // Keep saved articles in localStorage
   useEffect(() => {
     localStorage.setItem("savedArticles", JSON.stringify(savedArticles));
   }, [savedArticles]);
 
-  // Keep login status in localStorage
   useEffect(() => {
     localStorage.setItem("isLoggedIn", isLoggedIn);
   }, [isLoggedIn]);
 
-  // Keep username in localStorage
   useEffect(() => {
     localStorage.setItem("userName", userName);
   }, [userName]);
@@ -143,7 +141,9 @@ function App() {
         userName={userName}
       />
 
-      {currentPage === "home" && <Hero onSearch={handleSearch} />}
+      {currentPage === "home" && (
+        <Hero onSearch={handleSearch} onLoadingChange={setIsLoading} />
+      )}
 
       <Main
         articles={articles}
@@ -153,6 +153,7 @@ function App() {
         savedArticles={isLoggedIn ? savedArticles : temporarySavedArticles}
         onSaveArticle={handleSaveArticle}
         userName={userName}
+        isLoading={isLoading}
       />
 
       <Footer />

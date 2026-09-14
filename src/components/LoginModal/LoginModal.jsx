@@ -9,7 +9,9 @@ function LoginModal({ onClose, onOpenSignup, onLogin }) {
   const [password, setPassword] = useState("");
 
   const isEmailValid = /\S+@\S+\.\S+/.test(email);
-  const isFormValid = isEmailValid && password !== "";
+  const isPasswordValid = password !== "";
+
+  const isFormValid = isEmailValid && isPasswordValid;
 
   function handleEmailChange(event) {
     setEmail(event.target.value);

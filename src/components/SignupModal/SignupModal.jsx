@@ -10,7 +10,10 @@ function SignupModal({ onClose, onOpenLogin, onSignupSuccess }) {
   const [username, setUsername] = useState("");
 
   const isEmailValid = /\S+@\S+\.\S+/.test(email);
-  const isFormValid = isEmailValid && password !== "" && username !== "";
+  const isPasswordValid = password !== "";
+  const isUsernameValid = username !== "";
+
+  const isFormValid = isEmailValid && isPasswordValid && isUsernameValid;
 
   function handleEmailChange(event) {
     setEmail(event.target.value);
@@ -49,6 +52,10 @@ function SignupModal({ onClose, onOpenLogin, onSignupSuccess }) {
         value={email}
         onChange={handleEmailChange}
       />
+
+      {!isEmailValid && email !== "" && (
+        <span className="signup-modal__error">Invalid email address</span>
+      )}
 
       <label className="signup-modal__label" htmlFor="signup-password">
         Password
