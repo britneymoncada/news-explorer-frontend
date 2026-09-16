@@ -9,9 +9,13 @@ function SignupModal({ onClose, onOpenLogin, onSignupSuccess }) {
   const [password, setPassword] = useState("");
   const [username, setUsername] = useState("");
 
+  const [emailTouched, setEmailTouched] = useState(false);
+  const [passwordTouched, setPasswordTouched] = useState(false);
+  const [usernameTouched, setUsernameTouched] = useState(false);
+
   const isEmailValid = /\S+@\S+\.\S+/.test(email);
-  const isPasswordValid = password !== "";
-  const isUsernameValid = username !== "";
+  const isPasswordValid = password.trim() !== "";
+  const isUsernameValid = username.trim() !== "";
 
   const isFormValid = isEmailValid && isPasswordValid && isUsernameValid;
 
@@ -27,8 +31,24 @@ function SignupModal({ onClose, onOpenLogin, onSignupSuccess }) {
     setUsername(event.target.value);
   }
 
+  function handleEmailBlur() {
+    setEmailTouched(true);
+  }
+
+  function handlePasswordBlur() {
+    setPasswordTouched(true);
+  }
+
+  function handleUsernameBlur() {
+    setUsernameTouched(true);
+  }
+
   function handleSubmit(event) {
     event.preventDefault();
+
+    setEmailTouched(true);
+    setPasswordTouched(true);
+    setUsernameTouched(true);
 
     if (!isFormValid) {
       return;
@@ -51,10 +71,14 @@ function SignupModal({ onClose, onOpenLogin, onSignupSuccess }) {
         placeholder="Enter email"
         value={email}
         onChange={handleEmailChange}
+        onBlur={handleEmailBlur}
+        required
       />
 
-      {!isEmailValid && email !== "" && (
-        <span className="signup-modal__error">Invalid email address</span>
+      {emailTouched && !isEmailValid && (
+        <span className="signup-modal__error">
+          {email.trim() === "" ? "Email is required" : "Invalid email address"}
+        </span>
       )}
 
       <label className="signup-modal__label" htmlFor="signup-password">
@@ -69,7 +93,13 @@ function SignupModal({ onClose, onOpenLogin, onSignupSuccess }) {
         placeholder="Enter password"
         value={password}
         onChange={handlePasswordChange}
+        onBlur={handlePasswordBlur}
+        required
       />
+
+      {passwordTouched && !isPasswordValid && (
+        <span className="signup-modal__error">Password is required</span>
+      )}
 
       <label className="signup-modal__label" htmlFor="signup-username">
         Username
@@ -83,7 +113,13 @@ function SignupModal({ onClose, onOpenLogin, onSignupSuccess }) {
         placeholder="Enter your username"
         value={username}
         onChange={handleUsernameChange}
+        onBlur={handleUsernameBlur}
+        required
       />
+
+      {usernameTouched && !isUsernameValid && (
+        <span className="signup-modal__error">Username is required</span>
+      )}
 
       <button
         className="signup-modal__submit"

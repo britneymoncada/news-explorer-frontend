@@ -8,8 +8,11 @@ function LoginModal({ onClose, onOpenSignup, onLogin }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  const [emailTouched, setEmailTouched] = useState(false);
+  const [passwordTouched, setPasswordTouched] = useState(false);
+
   const isEmailValid = /\S+@\S+\.\S+/.test(email);
-  const isPasswordValid = password !== "";
+  const isPasswordValid = password.trim() !== "";
 
   const isFormValid = isEmailValid && isPasswordValid;
 
@@ -21,8 +24,19 @@ function LoginModal({ onClose, onOpenSignup, onLogin }) {
     setPassword(event.target.value);
   }
 
+  function handleEmailBlur() {
+    setEmailTouched(true);
+  }
+
+  function handlePasswordBlur() {
+    setPasswordTouched(true);
+  }
+
   function handleSubmit(event) {
     event.preventDefault();
+
+    setEmailTouched(true);
+    setPasswordTouched(true);
 
     if (!isFormValid) {
       return;
@@ -45,10 +59,14 @@ function LoginModal({ onClose, onOpenSignup, onLogin }) {
         placeholder="Enter email"
         value={email}
         onChange={handleEmailChange}
+        onBlur={handleEmailBlur}
+        required
       />
 
-      {!isEmailValid && email !== "" && (
-        <span className="login-modal__error">Invalid email address</span>
+      {emailTouched && !isEmailValid && (
+        <span className="login-modal__error">
+          {email.trim() === "" ? "Email is required" : "Invalid email address"}
+        </span>
       )}
 
       <label className="login-modal__label" htmlFor="password">
@@ -63,7 +81,13 @@ function LoginModal({ onClose, onOpenSignup, onLogin }) {
         placeholder="Enter password"
         value={password}
         onChange={handlePasswordChange}
+        onBlur={handlePasswordBlur}
+        required
       />
+
+      {passwordTouched && !isPasswordValid && (
+        <span className="login-modal__error">Password is required</span>
+      )}
 
       <button
         className="login-modal__submit"

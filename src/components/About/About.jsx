@@ -1,9 +1,10 @@
 import "./About.css";
+import meImage from "../../images/me.jpg";
 
 function About() {
   return (
     <section className="about">
-      <div className="about__image"></div>
+      <img className="about__image" src={meImage} alt="..." />
 
       <div className="about__content">
         <h2 className="about__title">About the author</h2>

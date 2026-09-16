@@ -13,34 +13,44 @@ function Navigation({
 }) {
   return (
     <nav className={`navigation ${isMenuOpen ? "navigation_open" : ""}`}>
-      <button
+      <a
         className={`navigation__link ${
           currentPage === "home" ? "navigation__link_active" : ""
         }`}
-        type="button"
-        onClick={() => onNavigate("home")}
+        href="/"
+        onClick={(event) => {
+          event.preventDefault();
+          onNavigate("home");
+        }}
       >
         Home
-      </button>
+      </a>
 
       {isLoggedIn ? (
         <>
-          <button
+          <a
             className={`navigation__link ${
               currentPage === "saved" ? "navigation__link_active" : ""
             }`}
-            type="button"
-            onClick={() => onNavigate("saved")}
+            href="/saved"
+            onClick={(event) => {
+              event.preventDefault();
+              onNavigate("saved");
+            }}
           >
             Saved articles
-          </button>
+          </a>
 
           <button className="navigation__user" type="button" onClick={onLogout}>
             <span className="navigation__username">{userName || "User"}</span>
 
             <img
               className="navigation__logout-icon"
-              src={currentPage === "home" ? logoutWhiteIcon : logoutIcon}
+              src={
+                currentPage === "home" || isMenuOpen
+                  ? logoutWhiteIcon
+                  : logoutIcon
+              }
               alt=""
               aria-hidden="true"
             />

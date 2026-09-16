@@ -23,6 +23,8 @@
   align-items: center;
   justify-content: center;
 
+  text-decoration: none;
+
   font-family: "Roboto", Arial, sans-serif;
   font-size: 18px;
   font-weight: 500;
@@ -211,5 +213,10 @@
 
     font-size: 20px;
     line-height: 24px;
+  }
+
+  .navigation_open .navigation__user {
+    color: #ffffff;
+    border-color: #ffffff;
   }
 }
